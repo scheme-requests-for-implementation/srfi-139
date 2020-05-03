@@ -4,6 +4,8 @@
 
 
 
+keywords: [[https://srfi.schemers.org/?keywords=binding][Binding]], [[https://srfi.schemers.org/?keywords=parameters][Parameters]]
+
 This repository hosts [[https://srfi.schemers.org/srfi-139/][SRFI 139]]: Syntax parameters, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /final/ status.
