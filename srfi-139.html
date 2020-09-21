@@ -1,23 +1,18 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>SRFI 139: Syntax parameters</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/srfi.css" type="text/css" />
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
+    <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-
   <body>
+  <h1><a href="https://srfi.schemers.org/"><img class="srfi-logo" src="https://srfi.schemers.org/srfi-logo.svg" alt="SRFI logo" /></a>139: Syntax parameters</h1>
 
-<h1>Title</h1>
+<p>by Marc Nieper-Wi&szlig;kirchen</p>
 
-Syntax parameters
-
-<h1>Author</h1>
-
-Marc Nieper-Wi&szlig;kirchen
-
-<h1>Status</h1>
+<h2>Status</h2>
 
 <p>This SRFI is currently in <em>final</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+139+at+srfi+dotschemers+dot+org">srfi-139@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="http://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-139">archive</a>.</p>
 <ul>
@@ -28,7 +23,7 @@ Marc Nieper-Wi&szlig;kirchen
   <li>Finalized: 2016-10-02</li>
 </ul>
 
-<h1>Abstract</h1>
+<h2>Abstract</h2>
 
 <p>
 Syntax parameters are to the expansion process of a Scheme program
@@ -37,7 +32,7 @@ hygienic implementation of syntactic forms that would otherwise
 introduce implicit identifiers unhygienically.
 </p>
 
-<h1>Rationale</h1>
+<h2>Rationale</h2>
 
 <p>
 Syntax parameters are a mechanism for rebinding a macro definition
@@ -73,7 +68,7 @@ keyword.
   expansion remains lexically scoped.
 </p>
 
-<h1>Examples</h1>
+<h2>Examples</h2>
 
 <p>
   The first example is certainly not an example of good functional
@@ -85,9 +80,9 @@ keyword.
 
 <pre>
  (import (scheme base)
-         (scheme write)  
+         (scheme write)
          (srfi 139))
- 
+
  (define-syntax-parameter abort
    (syntax-rules ()
      ((_ . _)
@@ -97,7 +92,7 @@ keyword.
    (syntax-rules ()
      ((forever body1 body2 ...)
       (call-with-current-continuation
-       (lambda (escape) 
+       (lambda (escape)
   	 (syntax-parameterize
 	     ((abort
 	      (syntax-rules ()
@@ -155,9 +150,9 @@ keyword.
  ...
 </pre>
 
-<h1>Specification</h1>
+<h2>Specification</h2>
 
-<h2>Syntax</h2>
+<h3>Syntax</h3>
 
 <pre>
  (define-syntax-parameter &lt;keyword&gt; &lt;transformer spec&gt;)
@@ -177,7 +172,7 @@ used in conjunction with another macro as in the examples above).
  (syntax-parameterize
      ((&lt;keyword&gt; &lt;transformer spec&gt;) ...)
    &lt;body&gt;)
-</pre>  
+</pre>
 
 <p>
 Adjusts the <code>&lt;keyword&gt;</code>s to use the transformer obtained
@@ -190,7 +185,7 @@ of <code>&lt;body&gt;</code> use the new transformers. This is
 somewhat similar to how parameterize adjusts the values of regular
 parameters, rather than creating new bindings.
 
-<h1>Implementation</h1>
+<h2>Implementation</h2>
 
 <p>A sample implementation is provided by the
 <a href="https://www.unsyntax.org">Unsyntax Scheme implementation</a>,
@@ -199,7 +194,7 @@ which implements this SRFI in the <code>(srfi 139)</code> library.</p>
 <p>Syntax parameters are also implemented by, at least, Chibi-Scheme,
 Guile, and Racket.</p>
 
-<h1>Acknowledgements</h1>
+<h2>Acknowledgements</h2>
 
 This SRFI wouldn't probably exist if Eli Barzilay, Ryan Culpepper, and
 Matthew hadn't published their
